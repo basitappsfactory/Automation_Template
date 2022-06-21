@@ -7,8 +7,7 @@ import org.junit.jupiter.api.parallel.Execution;
 import static org.junit.jupiter.api.parallel.ExecutionMode.CONCURRENT;
 
 @Execution(CONCURRENT)
-public class Tests {
-
+public class Demo {
 
     @Test
     public void TC01() throws Exception
@@ -22,7 +21,6 @@ public class Tests {
         System.out.println("FirstParallelUnitTest first() end => " + Thread.currentThread().getName());
     }
 
-    
     @Test
     public void TC02() throws Exception
     {
@@ -32,7 +30,6 @@ public class Tests {
         Response response = RestAssured.get("https://reqres.in/api/users/2");
         JSONObject json = new JSONObject(response.asString());
         JSONObject data = json.getJSONObject("data");
-        Assertions.assertTrue(data.get("id") instanceof String);
+        Assertions.assertTrue(data.get("id") instanceof Integer);
     }
-
 }
